@@ -10,7 +10,8 @@ body{
   background: $black;
   color: $white;
   display: flex;
-  margin: auto;
+  justify-content: center;
+  align-items: center;
   font-family: "Play", sans-serif;
   text-align: center;
   min-width: fit-content;

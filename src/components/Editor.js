@@ -1,19 +1,40 @@
 import React, {useState} from 'react';
 import '../styles/editor.scss';
+import { CirclePicker } from 'react-color'
 
 function Editor() {
+
+  const [panelWidth, setPanelWidth] = useState(16);
+  const [panelHeight, setPanelHeight] = useState(16);
+  const [hideOptions, setHideOptions] = useState(false);
+  const [hideDrawingPanel, setHideDrawingPanel] = useState(true);
+  const [buttonText, setButtonText] = useState('start drawing');
+  const [selectedColor, setColor] = useState("#f44336");
+
+const initializeDrawingPanel = () => {
+  setHideOptions(!hideOptions);
+  setHideDrawingPanel(!hideDrawingPanel)
+
+  buttonText === 'start drawing' 
+  ? setButtonText('reset')
+  : setButtonText('start drawing');
+}
+
+const changeColor = (color) => {
+  setColor(color.hex)
+}
 
   return (
     <div id="editor">
       <h1>Pixel Editor</h1>
-      <h2>Enter Panel Dimensions</h2>
-      <div id='options'>
+      {hideDrawingPanel && <h2>Enter Panel Dimensions</h2>}
+      {hideDrawingPanel && <div id='options'>
         <div className="option">
           <input 
           type="number" 
           className='panelInput' 
-          defaultValue='16' 
-          // onChange={ } 
+          defaultValue={panelWidth} 
+          onChange={e => setPanelWidth(e.target.value) } 
           />
           <span>Width</span>
         </div>
@@ -21,16 +42,17 @@ function Editor() {
           <input 
           type="number" 
           className='panelInput' 
-          defaultValue='16' 
-          // onChange={ } 
+          defaultValue={panelHeight} 
+          onChange={ e => setPanelHeight(e.target.value) } 
           />
           <span>Height</span>
         </div>
       </div>
-
-      <button className='button'>Start Drawing</button>
+      }
+      <button className='button' onClick={initializeDrawingPanel}>{buttonText}</button>
+      {hideOptions && <CirclePicker color={selectedColor} onChange={changeColor}/>}
     </div>
-  );
+);
 }
 
 export default Editor;
