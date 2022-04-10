@@ -52,11 +52,11 @@ const changeColor = (color) => {
       }
       <button className='button' onClick={initializeDrawingPanel}>{buttonText}</button>
       {hideOptions && <CirclePicker color={selectedColor} onChange={changeColor}/>}
-      <DrawingPanel
+      {hideOptions &&  <DrawingPanel
       width={panelWidth}
       height={panelHeight}
       selectedColor={selectedColor}
-      />
+      />}
     </div>
 );
 }
