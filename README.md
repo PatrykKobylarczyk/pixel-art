@@ -12,5 +12,6 @@ and export your finished piece as a PNG sprite.
 - React color library
 - React component export image
 
-#Author
+# Author
+
 Patryk Kobylarczyk 
