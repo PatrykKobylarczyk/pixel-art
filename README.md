@@ -6,6 +6,8 @@ Dynamically set up drawing panel dimensions,
 color the pixels to your liking 
 and export your finished piece as a PNG sprite.
 
+Live: https://patrykkobylarczyk.github.io/pixel-art/
+
 # Built with:
 - React
 - Scss
